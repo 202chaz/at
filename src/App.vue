@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <component v-bind:is="layout"></component>
+    <Footer />
   </div>
 </template>
 
 <script>
 import AppLayout from './layouts/AppLayout'
 import SimpleLayout from './layouts/SimpleLayout'
+import Footer from './components/Footer'
 export default {
   computed: {
     layout () {
@@ -15,7 +17,8 @@ export default {
   },
   components: {
     'app-layout': AppLayout,
-    'simple-layout': SimpleLayout
+    'simple-layout': SimpleLayout,
+    Footer
     // define as many layouts you want for the application
   }
 }

@@ -26,18 +26,6 @@
             <md-tooltip md-direction="right">Dashboard</md-tooltip>
           </md-list-item>
 
-          <md-list-item to="/admin/rakes">
-            <md-icon>chrome_reader_mode</md-icon>
-            <span class="md-list-item-text">Rake Task</span>
-            <md-tooltip md-direction="right">Rake Task</md-tooltip>
-          </md-list-item>
-
-          <md-list-item to="/admin/reports">
-            <md-icon>poll</md-icon>
-            <span class="md-list-item-text">Reports</span>
-            <md-tooltip md-direction="right">Reports</md-tooltip>
-          </md-list-item>
-
           <md-list-item v-on:click="logout()">
             <md-icon>power_settings_new</md-icon>
             <span class="md-list-item-text">Logout</span>
@@ -74,8 +62,7 @@
 
 <style lang="scss" scoped>
   .md-app {
-    min-height: 350px;
-    border: 1px solid rgba(#000, .12);
+    height: calc(100vh - 50px);
   }
 
    // Demo purposes only
