@@ -8,7 +8,8 @@ export default new Vuex.Store({
     layout: "simple-layout",
     token: localStorage.getItem("token") || "",
     user: {},
-    alertMsg: ""
+    alertMsg: "",
+    currentRoute: "Home"
   },
   mutations: {
     SET_LAYOUT (state, payload) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
       state.status = "";
       state.token = "";
       state.alertMsg = "You've successfully signed out.";
+    },
+    SET_ROUTE(state, route) {
+      state.currentRoute = route;
     }
   },
   actions: {
@@ -50,6 +54,7 @@ export default new Vuex.Store({
     },
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
-    alertMsg: state => state.alertMsg
+    alertMsg: state => state.alertMsg,
+    currentRoute: state => state.currentRoute
   }
 });

@@ -5,7 +5,7 @@
         <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
           <md-icon>menu</md-icon>
         </md-button>
-        <span class="md-title">Admin App</span>
+        <span class="md-title">{{ this.$store.getters.currentRoute }}</span>
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
@@ -45,7 +45,7 @@
   export default {
     name: 'PersistentMini',
     data: () => ({
-      menuVisible: false
+      menuVisible: false,
     }),
     methods: {
       toggleMenu () {
@@ -62,12 +62,12 @@
 
 <style lang="scss" scoped>
   .md-app {
-    height: calc(100vh - 50px);
+    height: calc(100vh - 84px);
   }
 
    // Demo purposes only
   .md-drawer {
     width: 230px;
-    max-width: calc(100vw - 125px);
+    // max-width: calc(100vw - 125px);
   }
 </style>
