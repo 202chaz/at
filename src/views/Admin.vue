@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    created() {
-      this.$store.commit('SET_LAYOUT', 'app-layout')
-    }
+export default {
+  created() {
+    this.$store.commit("SET_LAYOUT", "app-layout");
   }
+};
 </script>

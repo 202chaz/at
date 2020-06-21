@@ -12,7 +12,7 @@ export default new Vuex.Store({
     currentRoute: "Home"
   },
   mutations: {
-    SET_LAYOUT (state, payload) {
+    SET_LAYOUT(state, payload) {
       state.layout = payload;
     },
     auth_request(state) {
@@ -49,7 +49,7 @@ export default new Vuex.Store({
   },
   modules: {},
   getters: {
-    layout (state) {
+    layout(state) {
       return state.layout;
     },
     isLoggedIn: state => !!state.token,

@@ -2,7 +2,11 @@
   <div class="page-container">
     <md-app>
       <md-app-toolbar class="md-primary" md-elevation="0">
-        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
+        <md-button
+          class="md-icon-button"
+          @click="toggleMenu"
+          v-if="!menuVisible"
+        >
           <md-icon>menu</md-icon>
         </md-button>
         <span class="md-title">{{ this.$store.getters.currentRoute }}</span>
@@ -30,7 +34,6 @@
             <md-icon>power_settings_new</md-icon>
             <span class="md-list-item-text">Logout</span>
           </md-list-item>
-
         </md-list>
       </md-app-drawer>
 
@@ -42,32 +45,32 @@
 </template>
 
 <script>
-  export default {
-    name: 'PersistentMini',
-    data: () => ({
-      menuVisible: false,
-    }),
-    methods: {
-      toggleMenu () {
-        this.menuVisible = !this.menuVisible
-      },
-      logout: function() {
+export default {
+  name: "PersistentMini",
+  data: () => ({
+    menuVisible: false
+  }),
+  methods: {
+    toggleMenu() {
+      this.menuVisible = !this.menuVisible;
+    },
+    logout: function() {
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/login");
       });
     }
-    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  .md-app {
-    height: calc(100vh - 84px);
-  }
+.md-app {
+  height: calc(100vh - 84px);
+}
 
-   // Demo purposes only
-  .md-drawer {
-    width: 230px;
-    // max-width: calc(100vw - 125px);
-  }
+// Demo purposes only
+.md-drawer {
+  width: 230px;
+  // max-width: calc(100vw - 125px);
+}
 </style>

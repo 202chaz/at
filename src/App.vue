@@ -7,25 +7,25 @@
 </template>
 
 <script>
-import AppLayout from './layouts/AppLayout'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import SimpleLayout from './layouts/SimpleLayout'
+import AppLayout from "./layouts/AppLayout";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SimpleLayout from "./layouts/SimpleLayout";
 
 export default {
   computed: {
-    layout () {
-      return this.$store.getters.layout
+    layout() {
+      return this.$store.getters.layout;
     }
   },
   components: {
-    'app-layout': AppLayout,
-    'simple-layout': SimpleLayout,
+    "app-layout": AppLayout,
+    "simple-layout": SimpleLayout,
     Footer,
     Header
     // define as many layouts you want for the application
   }
-}
+};
 </script>
 
 <style>
