@@ -1,8 +1,23 @@
 <template>
+<div>
+  <div class="md-layout md-gutter">
+    <div class="md-layout-item md-size-40">
+      <md-field>
+        <label for="movie">Area</label>
+        <md-select name="area" id="area">
+          <md-option value="employer">Employer</md-option>
+          <md-option value="ivl">Individual</md-option>
+          <md-option value="family">Family</md-option>
+          <md-option value="reports">Reports</md-option>
+          <md-option value="notices">Notices</md-option>
+        </md-select>
+      </md-field>
+    </div>
+  </div>
   <div class="full-control">
     <div class="list">
       <md-list :md-expand-single="expandSingle">
-        <md-subheader>Available Task</md-subheader>
+        <md-subheader>Rakes</md-subheader>
         <md-list-item md-expand :md-expanded.sync="expandNews">
           <md-icon>assignment</md-icon>
           <span class="md-list-item-text">Edit Person DOB</span>
@@ -60,12 +75,16 @@
       </md-list>
     </div>
   </div>
+</div>
 </template>
 
 <script>
   export default {
     name: 'ListExpansion',
-
+    created() {
+      this.$store.commit("SET_LAYOUT", "app-layout"),
+        this.$store.commit("SET_ROUTE", "Rake Task");
+    },
     data () {
       return {
         expandNews: false,
@@ -76,7 +95,7 @@
 </script>
 
 <style lang="scss" scoped>
-  $list-width: 520px;
+  $list-width: 40%;
 
   .full-control {
     display: flex;
