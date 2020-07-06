@@ -18,6 +18,7 @@ export default {
       return this.$store.getters.layout;
     }
   },
+
   components: {
     "app-layout": AppLayout,
     "simple-layout": SimpleLayout,
