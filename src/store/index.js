@@ -1,7 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 Vue.use(Vuex);
+Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
   state: {
@@ -25,6 +28,15 @@ export default new Vuex.Store({
     },
     auth_error(state) {
       state.status = "error";
+    },
+    rake_processing(state) {
+      state.status = "rake_request_processing";
+    },
+    rake_error(state) {
+      state.status = "rake_error";
+    },
+    rake_complete(state) {
+      state.status = "rake_complete";
     },
     auth_success(state, token, user) {
       state.status = "success";
@@ -71,6 +83,18 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logout");
       localStorage.removeItem("token");
+    },
+    rake_test({ commit }) {
+      commit("rake_processing");
+      axios
+        .get("http://localhost:3001/rakeTest")
+        .then(function() {
+          commit("rake_complete");
+        })
+        .catch(function(error) {
+          commit("rake_error");
+          console.error(error);
+        });
     }
   },
   modules: {},
