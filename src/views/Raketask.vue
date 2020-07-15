@@ -39,12 +39,14 @@
             </md-list>
           </md-list-item>
 
-          <md-list-item md-expand>
+          <md-list-item md-expand :md-expanded.sync="expandDob">
             <md-icon>assignment</md-icon>
-            <span class="md-list-item-text">NFP</span>
+            <span class="md-list-item-text">Change Person DOB</span>
 
             <md-list slot="md-expand">
-              <md-list-item class="md-inset"> </md-list-item>
+              <md-list-item class="md-inset">
+                <ChangeDob />
+              </md-list-item>
             </md-list>
           </md-list-item>
         </md-list>
@@ -68,11 +70,15 @@
 </template>
 
 <script>
+import ChangeDob from "../components/rakes/ChangeDob";
 export default {
   name: "ListExpansion",
   created() {
     this.$store.commit("SET_LAYOUT", "app-layout"),
       this.$store.commit("SET_ROUTE", "Rake Task");
+  },
+  components: {
+    ChangeDob
   },
   channels: {
     NotificationsChannel: {
@@ -87,7 +93,6 @@ export default {
             Array.from(items, item => {
               item.style.removeProperty("color");
               item.style.removeProperty("font-weight");
-              item.style.textDecoration = "line-through";
             });
           }
           card.insertAdjacentHTML(
@@ -104,9 +109,17 @@ export default {
       room: "public"
     });
   },
+  watch: {
+    "$store.state.currentRakeTask": function() {
+      const taskName = this.$store.state.currentRakeTask.split("-")[0];
+      taskName === "change_person_dob" ? this.expandDob = false : "";
+      this.showConsoleUi();
+    }
+  },
   data() {
     return {
       expandTestRake: false,
+      expandDob: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null
@@ -122,6 +135,10 @@ export default {
           .dispatch("rake_test")
           .then(data => console.log(data))
           .catch(err => console.error(err));
+    },
+    showConsoleUi() {
+      this.showConsole = true;
+      this.isLoading = true;
     },
     closeConsole: function() {
       if (!this.expandTestRake) {

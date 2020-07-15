@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <md-app>
-      <md-app-toolbar class="md-primary" md-elevation="0">
+      <md-app-toolbar class="md-primary custom-blue" md-elevation="0">
         <md-button
           class="md-icon-button"
           @click="toggleMenu"
@@ -64,13 +64,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.md-app {
-  height: calc(100vh - 84px);
-}
+  .custom-blue {
+    background: linear-gradient(60deg,#448aff,#0644ad);
+  }
+  .md-app {
+    height: calc(100vh - 84px);
+  }
 
-// Demo purposes only
-.md-drawer {
-  width: 230px;
-  // max-width: calc(100vw - 125px);
-}
+  // Demo purposes only
+  .md-drawer {
+    width: 230px;
+    // max-width: calc(100vw - 125px);
+  }
 </style>

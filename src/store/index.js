@@ -13,6 +13,8 @@ export default new Vuex.Store({
     user: {},
     alertMsg: "",
     currentRoute: "Home",
+    snackBarMsg: "",
+    currentRakeTask: "",
     socket: {
       isConnected: false,
       message: "",
@@ -35,8 +37,10 @@ export default new Vuex.Store({
     rake_error(state) {
       state.status = "rake_error";
     },
-    rake_complete(state) {
+    rake_complete(state, task) {
       state.status = "rake_complete";
+      state.currentRakeTask = `${task}-${Date.now() / 1000 | 0}`;
+
     },
     auth_success(state, token, user) {
       state.status = "success";
@@ -48,6 +52,9 @@ export default new Vuex.Store({
       state.status = "";
       state.token = "";
       state.alertMsg = "You've successfully signed out.";
+    },
+    set_snackbar_msg(state, msg) {
+      state.snackBarMsg = msg;
     },
     SET_ROUTE(state, route) {
       state.currentRoute = route;
@@ -95,6 +102,21 @@ export default new Vuex.Store({
           commit("rake_error");
           console.error(error);
         });
+    },
+    submit_rake_request({ commit }, data) {
+      commit("rake_processing");
+      axios
+        .post("http://localhost:3001/rakes", {
+          data
+        })
+        .then(function(resp) {
+          const task = resp.data.data.task;
+          commit("rake_complete", task);
+        })
+        .catch(function(error) {
+          commit("rake_error");
+          console.error(error);
+        });
     }
   },
   modules: {},
@@ -105,6 +127,7 @@ export default new Vuex.Store({
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
     alertMsg: state => state.alertMsg,
+    snackBarMsg: state => state.snackBarMsg,
     currentRoute: state => state.currentRoute
   }
 });
