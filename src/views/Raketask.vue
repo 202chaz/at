@@ -71,6 +71,22 @@
               </md-list-item>
             </md-list>
           </md-list-item>
+
+          <md-list-item
+            md-expand
+            :md-expanded.sync="expandMoveAccountBetweenPeople"
+          >
+            <md-icon>assignment</md-icon>
+            <span class="md-list-item-text"
+              >Move User Account Between People</span
+            >
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">
+                <MoveAccountBetweenPeople />
+              </md-list-item>
+            </md-list>
+          </md-list-item>
         </md-list>
       </div>
       <div class="md-layout-item md-size-60">
@@ -95,6 +111,7 @@
 import ChangeDob from "../components/rakes/ChangeDob";
 import RemoveSsn from "../components/rakes/RemoveSsn";
 import ExchangeSsn from "../components/rakes/ExchangeSsn";
+import MoveAccountBetweenPeople from "../components/rakes/MoveAccountBetweenPeople";
 export default {
   name: "ListExpansion",
   created() {
@@ -104,7 +121,8 @@ export default {
   components: {
     ChangeDob,
     RemoveSsn,
-    ExchangeSsn
+    ExchangeSsn,
+    MoveAccountBetweenPeople
   },
   channels: {
     NotificationsChannel: {
@@ -142,6 +160,9 @@ export default {
       taskName === "remove_person_ssn" ? (this.expandRemoveSsn = false) : "";
       taskName === "exchange_ssn_between_two_accounts"
         ? (this.expandExchangeSsn = false)
+        : "";
+      taskName === "move_user_account_between_two_people_accounts"
+        ? (this.expandMoveAccountBetweenPeople = false)
         : "";
       this.showConsoleUi();
     }

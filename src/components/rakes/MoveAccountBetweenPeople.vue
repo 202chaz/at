@@ -8,9 +8,9 @@
 
         <md-card-content>
           <div class="md-layout md-gutter">
-            <div class="md-layout-item md-size-100">
+            <div class="md-layout-item md-size-50">
               <md-field :class="getValidationClass('hbxId')">
-                <label for="first-name">HBX ID</label>
+                <label for="hbxId">From HBX ID</label>
                 <md-input
                   name="hbx-id"
                   id="hbx-id"
@@ -21,6 +21,24 @@
                   >An HBX ID is required</span
                 >
                 <span class="md-error" v-else-if="!$v.form.hbxId.minlength"
+                  >Invalid HBX ID</span
+                >
+              </md-field>
+            </div>
+
+            <div class="md-layout-item md-size-50">
+              <md-field :class="getValidationClass('hbxId2')">
+                <label for="hbxId2">To HBX ID</label>
+                <md-input
+                  name="hbx-id-2"
+                  id="hbx-id-2"
+                  v-model="form.hbxId2"
+                  :disabled="sending"
+                />
+                <span class="md-error" v-if="!$v.form.hbxId2.required"
+                  >An HBX ID is required</span
+                >
+                <span class="md-error" v-else-if="!$v.form.hbxId2.minlength"
                   >Invalid HBX ID</span
                 >
               </md-field>
@@ -55,12 +73,13 @@ import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
-  name: "RemovePersonSSNForm",
+  name: "MoveAccountsForm",
   mixins: [validationMixin],
   data: () => ({
     form: {
       hbxId: null,
-      task: "remove_person_ssn"
+      hbxId2: null,
+      task: "move_user_account_between_two_people_accounts"
     },
     sending: false,
     displaySnackbar: false,
@@ -72,6 +91,10 @@ export default {
   validations: {
     form: {
       hbxId: {
+        required,
+        minLength: minLength(6)
+      },
+      hbxId2: {
         required,
         minLength: minLength(6)
       }
@@ -91,7 +114,8 @@ export default {
       this.sending = true;
       const data = {};
       data["task"] = this.form.task;
-      data["hbx_id"] = this.form.hbxId;
+      data["hbx_id_1"] = this.form.hbxId;
+      data["hbx_id_2"] = this.form.hbxId2;
       this.$store
         .dispatch("submit_rake_request", data)
         .then(this.showSnackMsg())
@@ -112,6 +136,7 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.hbxId = null;
+      this.form.hbxId2 = null;
       this.sending = false;
     }
   }
