@@ -60,6 +60,17 @@
               </md-list-item>
             </md-list>
           </md-list-item>
+
+          <md-list-item md-expand :md-expanded.sync="expandExchangeSsn">
+            <md-icon>assignment</md-icon>
+            <span class="md-list-item-text">Exchange SSN Between accounts</span>
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">
+                <ExchangeSsn />
+              </md-list-item>
+            </md-list>
+          </md-list-item>
         </md-list>
       </div>
       <div class="md-layout-item md-size-60">
@@ -83,6 +94,7 @@
 <script>
 import ChangeDob from "../components/rakes/ChangeDob";
 import RemoveSsn from "../components/rakes/RemoveSsn";
+import ExchangeSsn from "../components/rakes/ExchangeSsn";
 export default {
   name: "ListExpansion",
   created() {
@@ -91,7 +103,8 @@ export default {
   },
   components: {
     ChangeDob,
-    RemoveSsn
+    RemoveSsn,
+    ExchangeSsn
   },
   channels: {
     NotificationsChannel: {
@@ -127,6 +140,9 @@ export default {
       const taskName = this.$store.state.currentRakeTask.split("-")[0];
       taskName === "change_person_dob" ? (this.expandDob = false) : "";
       taskName === "remove_person_ssn" ? (this.expandRemoveSsn = false) : "";
+      taskName === "exchange_ssn_between_two_accounts"
+        ? (this.expandExchangeSsn = false)
+        : "";
       this.showConsoleUi();
     }
   },
@@ -135,6 +151,7 @@ export default {
       expandTestRake: false,
       expandDob: false,
       expandRemoveSsn: false,
+      expandExchangeSsn: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null
