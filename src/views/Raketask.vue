@@ -49,6 +49,17 @@
               </md-list-item>
             </md-list>
           </md-list-item>
+
+          <md-list-item md-expand :md-expanded.sync="expandRemoveSsn">
+            <md-icon>assignment</md-icon>
+            <span class="md-list-item-text">Remove Person SSN</span>
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">
+                <RemoveSsn />
+              </md-list-item>
+            </md-list>
+          </md-list-item>
         </md-list>
       </div>
       <div class="md-layout-item md-size-60">
@@ -71,6 +82,7 @@
 
 <script>
 import ChangeDob from "../components/rakes/ChangeDob";
+import RemoveSsn from "../components/rakes/RemoveSsn";
 export default {
   name: "ListExpansion",
   created() {
@@ -78,7 +90,8 @@ export default {
       this.$store.commit("SET_ROUTE", "Rake Task");
   },
   components: {
-    ChangeDob
+    ChangeDob,
+    RemoveSsn
   },
   channels: {
     NotificationsChannel: {
@@ -112,7 +125,8 @@ export default {
   watch: {
     "$store.state.currentRakeTask": function() {
       const taskName = this.$store.state.currentRakeTask.split("-")[0];
-      taskName === "change_person_dob" ? this.expandDob = false : "";
+      taskName === "change_person_dob" ? (this.expandDob = false) : "";
+      taskName === "remove_person_ssn" ? (this.expandRemoveSsn = false) : "";
       this.showConsoleUi();
     }
   },
@@ -120,6 +134,7 @@ export default {
     return {
       expandTestRake: false,
       expandDob: false,
+      expandRemoveSsn: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null
