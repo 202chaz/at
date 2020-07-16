@@ -19,26 +19,6 @@
         <md-list :md-expand-single="expandSingle">
           <md-subheader>Rakes</md-subheader>
 
-          <md-list-item
-            md-expand
-            :md-expanded.sync="expandTestRake"
-            v-on:click="closeConsole()"
-          >
-            <md-icon>assignment</md-icon>
-            <span class="md-list-item-text">Test Task</span>
-
-            <md-list slot="md-expand">
-              <md-list-item class="md-inset">
-                <md-button
-                  class="md-raised md-accent rakeBtn"
-                  v-on:click="rakeTest()"
-                >
-                  Trigger Task
-                </md-button>
-              </md-list-item>
-            </md-list>
-          </md-list-item>
-
           <md-list-item md-expand :md-expanded.sync="expandDob">
             <md-icon>assignment</md-icon>
             <span class="md-list-item-text">Change Person DOB</span>
@@ -87,6 +67,19 @@
               </md-list-item>
             </md-list>
           </md-list-item>
+
+          <md-list-item md-expand :md-expanded.sync="expandCeDateOfTermination">
+            <md-icon>assignment</md-icon>
+            <span class="md-list-item-text"
+              >Change Census Employee Date of Termination</span
+            >
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">
+                <ChangeCeDateOfTermination />
+              </md-list-item>
+            </md-list>
+          </md-list-item>
         </md-list>
       </div>
       <div class="md-layout-item md-size-60">
@@ -112,6 +105,7 @@ import ChangeDob from "../components/rakes/ChangeDob";
 import RemoveSsn from "../components/rakes/RemoveSsn";
 import ExchangeSsn from "../components/rakes/ExchangeSsn";
 import MoveAccountBetweenPeople from "../components/rakes/MoveAccountBetweenPeople";
+import ChangeCeDateOfTermination from "../components/rakes/ChangeCeDateOfTermination";
 export default {
   name: "ListExpansion",
   created() {
@@ -122,7 +116,8 @@ export default {
     ChangeDob,
     RemoveSsn,
     ExchangeSsn,
-    MoveAccountBetweenPeople
+    MoveAccountBetweenPeople,
+    ChangeCeDateOfTermination
   },
   channels: {
     NotificationsChannel: {
@@ -164,6 +159,9 @@ export default {
       taskName === "move_user_account_between_two_people_accounts"
         ? (this.expandMoveAccountBetweenPeople = false)
         : "";
+      taskName === "change_ce_date_of_termination"
+        ? (this.expandCeDateOfTermination = false)
+        : "";
       this.showConsoleUi();
     }
   },
@@ -173,6 +171,7 @@ export default {
       expandDob: false,
       expandRemoveSsn: false,
       expandExchangeSsn: false,
+      expandCeDateOfTermination: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null
