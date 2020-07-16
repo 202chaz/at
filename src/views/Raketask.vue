@@ -80,6 +80,21 @@
               </md-list-item>
             </md-list>
           </md-list-item>
+          <md-list-item
+            md-expand
+            :md-expanded.sync="expandErFailingParticipation"
+          >
+            <md-icon>assignment</md-icon>
+            <span class="md-list-item-text"
+              >Generate Employers Failing Minimum Particiption</span
+            >
+
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">
+                <EmployersFailingMinimumParticipation />
+              </md-list-item>
+            </md-list>
+          </md-list-item>
         </md-list>
       </div>
       <div class="md-layout-item md-size-60">
@@ -106,6 +121,7 @@ import RemoveSsn from "../components/rakes/RemoveSsn";
 import ExchangeSsn from "../components/rakes/ExchangeSsn";
 import MoveAccountBetweenPeople from "../components/rakes/MoveAccountBetweenPeople";
 import ChangeCeDateOfTermination from "../components/rakes/ChangeCeDateOfTermination";
+import EmployersFailingMinimumParticipation from "../components/rakes/EmployersFailingMinimumParticipation";
 export default {
   name: "ListExpansion",
   created() {
@@ -117,7 +133,8 @@ export default {
     RemoveSsn,
     ExchangeSsn,
     MoveAccountBetweenPeople,
-    ChangeCeDateOfTermination
+    ChangeCeDateOfTermination,
+    EmployersFailingMinimumParticipation
   },
   channels: {
     NotificationsChannel: {
@@ -162,6 +179,9 @@ export default {
       taskName === "change_ce_date_of_termination"
         ? (this.expandCeDateOfTermination = false)
         : "";
+      taskName === "employers_failing_minimum_participation"
+        ? (this.expandErFailingParticipation = false)
+        : "";
       this.showConsoleUi();
     }
   },
@@ -172,6 +192,7 @@ export default {
       expandRemoveSsn: false,
       expandExchangeSsn: false,
       expandCeDateOfTermination: false,
+      expandErFailingParticipation: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null
@@ -179,8 +200,6 @@ export default {
   },
   methods: {
     rakeTest: function() {
-      const button = document.querySelector(".rakeBtn");
-      button.setAttribute("disabled", true);
       (this.showConsole = true),
         (this.isLoading = true),
         this.$store
@@ -193,11 +212,7 @@ export default {
       this.isLoading = true;
     },
     closeConsole: function() {
-      if (!this.expandTestRake) {
-        this.showConsole = false;
-        const button = document.querySelector(".rakeBtn");
-        button.removeAttribute("disabled");
-      }
+      this.showConsole = false;
     }
   }
 };
