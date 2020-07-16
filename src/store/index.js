@@ -39,8 +39,7 @@ export default new Vuex.Store({
     },
     rake_complete(state, task) {
       state.status = "rake_complete";
-      state.currentRakeTask = `${task}-${Date.now() / 1000 | 0}`;
-
+      state.currentRakeTask = `${task}-${(Date.now() / 1000) | 0}`;
     },
     auth_success(state, token, user) {
       state.status = "success";

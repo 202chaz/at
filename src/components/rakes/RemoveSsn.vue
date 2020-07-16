@@ -3,7 +3,7 @@
     <form novalidate class="md-layout" @submit.prevent="validateUserInfo">
       <md-card class="md-layout-item md-size-100">
         <md-card-header>
-          <div class="md-title">Person Details</div>
+          <div class="md-title">Remove Person SSN</div>
         </md-card-header>
 
         <md-card-content>
@@ -24,18 +24,6 @@
                   >Invalid HBX ID</span
                 >
               </md-field>
-            </div>
-
-            <div class="md-layout-item md-size-50">
-              <md-datepicker
-                v-model="form.dob"
-                :disabled="sending"
-                id="dob"
-                name="dob"
-                :class="getValidationClass('dob')"
-              >
-                <label>Select date</label>
-              </md-datepicker>
             </div>
           </div>
         </md-card-content>
@@ -65,16 +53,14 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
-import format from "date-fns/format";
 
 export default {
-  name: "ChangePersonDOBForm",
+  name: "RemovePersonSSNForm",
   mixins: [validationMixin],
   data: () => ({
     form: {
       hbxId: null,
-      dob: null,
-      task: "change_person_dob"
+      task: "remove_person_ssn"
     },
     sending: false,
     displaySnackbar: false,
@@ -83,17 +69,11 @@ export default {
     isInfinity: false,
     message: null
   }),
-  created: function() {
-    this.$material.locale.dateFormat = "MM/dd/yyyy";
-  },
   validations: {
     form: {
       hbxId: {
         required,
         minLength: minLength(6)
-      },
-      dob: {
-        required
       }
     }
   },
@@ -112,7 +92,6 @@ export default {
       const data = {};
       data["task"] = this.form.task;
       data["hbx_id"] = this.form.hbxId;
-      data["dob"] = format(this.form.dob, "MM/dd/yyyy");
       this.$store
         .dispatch("submit_rake_request", data)
         .then(this.showSnackMsg())
@@ -133,7 +112,6 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.hbxId = null;
-      this.form.dob = null;
       this.sending = false;
     }
   }
