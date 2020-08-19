@@ -7,6 +7,7 @@ import Login from "@/views/Login.vue";
 import Raketask from "@/views/Raketask.vue";
 import Reports from "@/views/Reports.vue";
 import Welcome from "@/views/Welcome.vue";
+import HistoryTracker from "@/views/HistoryTracker.vue";
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,11 @@ const routes = [
         path: "reports",
         name: "Reports",
         component: Reports
+      },
+      {
+        path: "history",
+        name: "History",
+        component: HistoryTracker
       }
     ]
   }

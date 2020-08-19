@@ -193,6 +193,7 @@ export default {
       expandExchangeSsn: false,
       expandCeDateOfTermination: false,
       expandErFailingParticipation: false,
+      expandMoveAccountBetweenPeople: false,
       expandSingle: false,
       showConsole: false,
       isLoading: null

@@ -93,7 +93,7 @@ export default new Vuex.Store({
     rake_test({ commit }) {
       commit("rake_processing");
       axios
-        .get("http://localhost:3001/rakeTest")
+        .get("http://localhost:4000/rakeTest")
         .then(function() {
           commit("rake_complete");
         })
@@ -105,7 +105,7 @@ export default new Vuex.Store({
     submit_rake_request({ commit }, data) {
       commit("rake_processing");
       axios
-        .post("http://localhost:3001/rakes", {
+        .post("http://localhost:4000/rakes", {
           data
         })
         .then(function(resp) {
