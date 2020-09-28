@@ -17,7 +17,7 @@
       </div>
 
       <div class="md-layout-item">
-        <router-link to="/admin/reports">
+        <router-link to="/admin/reports/all">
           <md-card md-elevation-5>
             <md-card-header>
               <div class="md-title">Reports</div>

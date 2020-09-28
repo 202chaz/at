@@ -38,7 +38,10 @@
               </md-list-item>
             </md-list>
           </md-list-item>
-          <md-list-item md-expand :md-expanded.sync="expandShopMonthlyEnrollments">
+          <md-list-item
+            md-expand
+            :md-expanded.sync="expandShopMonthlyEnrollments"
+          >
             <md-icon>assignment</md-icon>
             <span class="md-list-item-text">Shop Monthly Enrollments</span>
 
@@ -50,7 +53,9 @@
           </md-list-item>
           <md-list-item md-expand :md-expanded.sync="expandErPlanYearStatus">
             <md-icon>assignment</md-icon>
-            <span class="md-list-item-text">Shop Employer Plan Year Status</span>
+            <span class="md-list-item-text"
+              >Shop Employer Plan Year Status</span
+            >
 
             <md-list slot="md-expand">
               <md-list-item class="md-inset">
