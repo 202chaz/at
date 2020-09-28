@@ -14,7 +14,7 @@
 }
 .img-container {
   border-right: 1px solid #ddd;
-  width: 210px;
+  width: 231px;
   height: 100%;
 }
 img.main-logo {

@@ -8,6 +8,8 @@ import Raketask from "@/views/Raketask.vue";
 import Reports from "@/views/Reports.vue";
 import Welcome from "@/views/Welcome.vue";
 import HistoryTracker from "@/views/HistoryTracker.vue";
+import EnrollmentSummary from "@/views/EnrollmentSummary.vue";
+import RenewingGroupDependentAgeOff from "@/views/RenewingGroupDependentAgeOff.vue";
 
 Vue.use(VueRouter);
 
@@ -41,9 +43,19 @@ const routes = [
         component: Raketask
       },
       {
-        path: "reports",
+        path: "reports/all",
         name: "Reports",
         component: Reports
+      },
+      {
+        path: "reports/enrollment_summary",
+        name: "Enrollment Summary",
+        component: EnrollmentSummary
+      },
+      {
+        path: "reports/renewing_group_dependent_age_off",
+        name: "Enrollment Summary",
+        component: RenewingGroupDependentAgeOff
       },
       {
         path: "history",

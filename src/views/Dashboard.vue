@@ -17,16 +17,18 @@
       </div>
 
       <div class="md-layout-item">
-        <md-card md-elevation-5>
-          <md-card-header>
-            <div class="md-title">Reports</div>
-          </md-card-header>
-          <md-card-content>
-            <md-card-media>
-              <img src="/rake.webp" alt="reports image" class="images" />
-            </md-card-media>
-          </md-card-content>
-        </md-card>
+        <router-link to="/admin/reports/all">
+          <md-card md-elevation-5>
+            <md-card-header>
+              <div class="md-title">Reports</div>
+            </md-card-header>
+            <md-card-content>
+              <md-card-media>
+                <img src="/rake.webp" alt="reports image" class="images" />
+              </md-card-media>
+            </md-card-content>
+          </md-card>
+        </router-link>
       </div>
 
       <div class="md-layout-item">
