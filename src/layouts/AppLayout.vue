@@ -18,15 +18,19 @@
 
         <md-list :md-expand-single="expandSingle">
           <md-list-item>
-          <md-field>
-            <label for="environment">Select Environment</label>
-            <md-select v-model="environment" name="environment" id="environment">
-              <md-option value="uat">UAT</md-option>
-              <md-option value="preprod">Pre Prod</md-option>
-              <md-option value="qa">QA</md-option>
-              <md-option value="production">Production</md-option>
-            </md-select>
-          </md-field>
+            <md-field>
+              <label for="environment">Select Environment</label>
+              <md-select
+                v-model="environment"
+                name="environment"
+                id="environment"
+              >
+                <md-option value="uat">UAT</md-option>
+                <md-option value="preprod">Pre Prod</md-option>
+                <md-option value="qa">QA</md-option>
+                <md-option value="production">Production</md-option>
+              </md-select>
+            </md-field>
           </md-list-item>
 
           <md-list-item to="/admin/dashboard">
@@ -99,42 +103,12 @@
                   <md-list-item class="md-inset">INDIVIDUAL</md-list-item>
                 </md-list>
               </md-list-item>
-              <md-list-item class="md-inset" md-expand
-                ><span class="main-title">Custom Reports</span>
+              <md-list-item class="md-inset" md-expand>
+                <span class="main-title">Custom Reports</span>
                 <md-list slot="md-expand">
-                  <md-list-item class="md-inset" md-expand
-                    >SHOP
-                    <md-list slot="md-expand">
-                      <md-list-item class="md-inset"
-                        >Renewing Group <br />Dependent Age Off</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Dependent Age Off</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Congressional <br />Dependent Age Off</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Missing Renewals</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Incorrect Renewals</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Ward Renewals</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Employees <br />Missing SSN</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >COBRA Enrollment</md-list-item
-                      >
-                      <md-list-item class="md-inset"
-                        >Groups in Arrears</md-list-item
-                      >
-                    </md-list>
-                  </md-list-item>
-                  <md-list-item class="md-inset">INDIVIDUAL</md-list-item>
+                  <router-link to="/admin/custom_reporting/employers">
+                    <md-list-item class="md-inset">Employers</md-list-item>
+                  </router-link>
                 </md-list>
               </md-list-item>
             </md-list>
