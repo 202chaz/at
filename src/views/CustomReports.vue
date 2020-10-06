@@ -1,11 +1,11 @@
 <template>
-  <div class="md-layout">
+  <div class="md-layout custom-reports">
     <div class="md-layout-item md-layout md-size-10">
       <div class="md-layout-item">
-        <p>SELECT</p>
+        <span class="md-title">SELECT</span>
       </div>
     </div>
-    <div class="md-layout-item md-layout md-size-20">
+    <div class="md-layout-item md-layout md-size-15">
       <div class="md-layout-item">
         <div v-for="item in fields" :key="item.name">
           <md-checkbox :value="item.value" v-model="array">{{
@@ -16,7 +16,7 @@
     </div>
     <div class="md-layout-item md-layout md-size-10">
       <div class="md-layout-item">
-        <p>FROM</p>
+        <span class="md-title">FROM</span>
       </div>
     </div>
     <div class="md-layout-item md-layout md-size-20">
@@ -41,25 +41,30 @@
     </div>
     <div class="md-layout-item md-layout md-size-100">
       <div class="md-layout-item">
-      <md-table>
-        <md-table-row>
-          <md-table-head v-if="array.includes('employer.legal_name') || array.includes('all')">Legal Name</md-table-head>
-          <md-table-head v-if="array.includes('employer.fein') || array.includes('all')">FEIN</md-table-head>
-          <md-table-head v-if="array.includes('employer.hbx_id') || array.includes('all')">HBX ID</md-table-head>
-          <md-table-head v-if="array.includes('employer.entity_kind') || array.includes('all')">Entity Kind</md-table-head>
-          <md-table-head v-if="array.includes('employer.profile_source') || array.includes('all')">Profile Source</md-table-head>
-          <md-table-head v-if="array.includes('employer.status') || array.includes('all')">Status</md-table-head>
-        </md-table-row>
+        <md-table v-if="dataArray.length > 0">
+          <md-table-row>
+            <md-table-head v-if="array.includes('employer.legal_name') || array.includes('all')">Legal Name</md-table-head>
+            <md-table-head v-if="array.includes('employer.fein') || array.includes('all')">FEIN</md-table-head>
+            <md-table-head v-if="array.includes('employer.hbx_id') || array.includes('all')">HBX ID</md-table-head>
+            <md-table-head v-if="array.includes('employer.entity_kind') || array.includes('all')">Entity Kind</md-table-head>
+            <md-table-head v-if="array.includes('employer.profile_source') || array.includes('all')">Profile Source</md-table-head>
+            <md-table-head v-if="array.includes('employer.status') || array.includes('all')">Status</md-table-head>
+          </md-table-row>
 
-        <md-table-row v-for="item in dataArray" :key="item.name">
-          <md-table-head v-if="array.includes('employer.legal_name') || array.includes('all')">{{item['employer.legal_name']}}</md-table-head>
-          <md-table-head v-if="array.includes('employer.fein') || array.includes('all')">{{item['employer.fein']}}</md-table-head>
-          <md-table-head v-if="array.includes('employer.hbx_id') || array.includes('all')">{{item['employer.hbx_id']}}</md-table-head>
-          <md-table-head v-if="array.includes('employer.entity_kind') || array.includes('all')">{{item['employer.entity_kind']}}</md-table-head>
-          <md-table-head v-if="array.includes('employer.profile_source') || array.includes('all')">{{item['employer.profile_source']}}</md-table-head>
-          <md-table-head v-if="array.includes('employer.status') || array.includes('all')">{{item['employer.status']}}</md-table-head>
-        </md-table-row>
-      </md-table>
+          <md-table-row v-for="item in dataArray" :key="item.name">
+            <md-table-head v-if="array.includes('employer.legal_name') || array.includes('all')">{{item['employer.legal_name']}}</md-table-head>
+            <md-table-head v-if="array.includes('employer.fein') || array.includes('all')">{{item['employer.fein']}}</md-table-head>
+            <md-table-head v-if="array.includes('employer.hbx_id') || array.includes('all')">{{item['employer.hbx_id']}}</md-table-head>
+            <md-table-head v-if="array.includes('employer.entity_kind') || array.includes('all')">{{item['employer.entity_kind']}}</md-table-head>
+            <md-table-head v-if="array.includes('employer.profile_source') || array.includes('all')">{{item['employer.profile_source']}}</md-table-head>
+            <md-table-head v-if="array.includes('employer.status') || array.includes('all')">{{item['employer.status']}}</md-table-head>
+          </md-table-row>
+        </md-table>
+      </div>
+    </div>
+    <div class="md-layout-item md-layout" v-if="dataArray.length > 0">
+      <div class="md-layout-item size-20">
+        <md-button class="md-dense md-raised md-primary"><md-icon>import_export</md-icon> Export to CSV</md-button>
       </div>
     </div>
   </div>
@@ -102,4 +107,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.custom-reports {
+  margin-bottom: 50px;
+}
+</style>
