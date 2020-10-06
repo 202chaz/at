@@ -12,61 +12,63 @@
     <br />
     <br />
     <div class="md-layout-item md-size-100">
-    New Query
+      New Query
     </div>
     <div class="md-layout-item md-size-15">
-    <md-datepicker v-model="fromDate">
-    <label>Select from date</label>
-    </md-datepicker>
+      <md-datepicker v-model="fromDate">
+        <label>Select from date</label>
+      </md-datepicker>
     </div>
     <div class="md-layout-item md-size-15">
-    <md-datepicker v-model="toDate">
-    <label>Select to date</label>
-    </md-datepicker>
+      <md-datepicker v-model="toDate">
+        <label>Select to date</label>
+      </md-datepicker>
     </div>
     <div class="md-layout-item md-size-20">
-    <md-button class="md-raised md-primary" style="float:right">Run</md-button>
-    <md-button class="md-raised" style="float:right">Cancel</md-button>
+      <md-button class="md-raised md-primary" style="float:right"
+        >Run</md-button
+      >
+      <md-button class="md-raised" style="float:right">Cancel</md-button>
     </div>
     <br />
     <div class="md-layout-item md-size-100 ee-table">
-    <md-table>
-      <md-table-row>
-        <md-table-head md-numeric>Employer ID</md-table-head>
-        <md-table-head>Renewing Date</md-table-head>
-        <md-table-head>Employee First</md-table-head>
-        <md-table-head>Employee Last</md-table-head>
-        <md-table-head md-numeric>Employee ID</md-table-head>
-        <md-table-head>Employee DOB</md-table-head>
-      </md-table-row>
+      <md-table>
+        <md-table-row>
+          <md-table-head md-numeric>Employer ID</md-table-head>
+          <md-table-head>Renewing Date</md-table-head>
+          <md-table-head>Employee First</md-table-head>
+          <md-table-head>Employee Last</md-table-head>
+          <md-table-head md-numeric>Employee ID</md-table-head>
+          <md-table-head>Employee DOB</md-table-head>
+        </md-table-row>
 
-      <md-table-row>
-        <md-table-cell md-numeric>651313</md-table-cell>
-        <md-table-cell>10/01/2020</md-table-cell>
-        <md-table-cell>William</md-table-cell>
-        <md-table-cell>Tell</md-table-cell>
-        <md-table-cell md-numeric>34567</md-table-cell>
-        <md-table-cell>09/03/1990</md-table-cell>
-      </md-table-row>
+        <md-table-row>
+          <md-table-cell md-numeric>651313</md-table-cell>
+          <md-table-cell>10/01/2020</md-table-cell>
+          <md-table-cell>William</md-table-cell>
+          <md-table-cell>Tell</md-table-cell>
+          <md-table-cell md-numeric>34567</md-table-cell>
+          <md-table-cell>09/03/1990</md-table-cell>
+        </md-table-row>
 
-      <md-table-row>
-        <md-table-cell md-numeric>571813</md-table-cell>
-        <md-table-cell>10/01/2020</md-table-cell>
-        <md-table-cell>Richard</md-table-cell>
-        <md-table-cell>Roberts</md-table-cell>
-        <md-table-cell md-numeric>34567</md-table-cell>
-        <md-table-cell>09/03/1990</md-table-cell>
-      </md-table-row>
+        <md-table-row>
+          <md-table-cell md-numeric>571813</md-table-cell>
+          <md-table-cell>10/01/2020</md-table-cell>
+          <md-table-cell>Richard</md-table-cell>
+          <md-table-cell>Roberts</md-table-cell>
+          <md-table-cell md-numeric>34567</md-table-cell>
+          <md-table-cell>09/03/1990</md-table-cell>
+        </md-table-row>
 
-      <md-table-row>
-        <md-table-cell md-numeric>991313</md-table-cell>
-        <md-table-cell>10/01/2020</md-table-cell>
-        <md-table-cell>Peter</md-table-cell>
-        <md-table-cell>Pan</md-table-cell>
-        <md-table-cell md-numeric>34567</md-table-cell>
-        <md-table-cell>09/03/1990</md-table-cell>
-      </md-table-row>
-    </md-table>
+        <md-table-row>
+          <md-table-cell md-numeric>991313</md-table-cell>
+          <md-table-cell>10/01/2020</md-table-cell>
+          <md-table-cell>Peter</md-table-cell>
+          <md-table-cell>Pan</md-table-cell>
+          <md-table-cell md-numeric>34567</md-table-cell>
+          <md-table-cell>09/03/1990</md-table-cell>
+        </md-table-row>
+      </md-table>
     </div>
     <div class="md-layout-item md-size-95">
       <span style="float: right">

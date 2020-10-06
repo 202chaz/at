@@ -10,6 +10,7 @@ import Welcome from "@/views/Welcome.vue";
 import HistoryTracker from "@/views/HistoryTracker.vue";
 import EnrollmentSummary from "@/views/EnrollmentSummary.vue";
 import RenewingGroupDependentAgeOff from "@/views/RenewingGroupDependentAgeOff.vue";
+import CustomReport from "@/views/CustomReports.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,11 @@ const routes = [
         path: "reports/all",
         name: "Reports",
         component: Reports
+      },
+      {
+        path: "custom_reporting/:type",
+        name: "Custom Reporting",
+        component: CustomReport
       },
       {
         path: "reports/enrollment_summary",
