@@ -7,8 +7,6 @@
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
         <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
-
           <div class="md-toolbar-section-end">
             <md-button class="md-icon-button md-dense">
               <md-icon v-if="!menuVisible">keyboard_arrow_left</md-icon>
@@ -103,8 +101,8 @@
                   <md-list-item class="md-inset">INDIVIDUAL</md-list-item>
                 </md-list>
               </md-list-item>
-              <md-list-item class="md-inset" md-expand>
-                <span class="main-title">Custom Reports</span>
+              <md-list-item class="md-inset">
+                <router-link to="/admin/custom_reporting/employers" class="main-title">Custom Reports</router-link>
                 <md-list slot="md-expand">
                   <router-link to="/admin/custom_reporting/employers">
                     <md-list-item class="md-inset">Employers</md-list-item>
@@ -153,7 +151,7 @@ export default {
 
 <style lang="scss" scoped>
 .custom-blue {
-  background: linear-gradient(60deg, #448aff, #0644ad);
+  background: #007bc4;;
 }
 .md-app {
   height: calc(100vh - 84px);
