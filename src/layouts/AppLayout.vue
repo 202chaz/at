@@ -102,7 +102,11 @@
                 </md-list>
               </md-list-item>
               <md-list-item class="md-inset">
-                <router-link to="/admin/custom_reporting/employers" class="main-title">Custom Reports</router-link>
+                <router-link
+                  to="/admin/custom_reporting/employers"
+                  class="main-title"
+                  >Custom Reports</router-link
+                >
                 <md-list slot="md-expand">
                   <router-link to="/admin/custom_reporting/employers">
                     <md-list-item class="md-inset">Employers</md-list-item>
@@ -151,7 +155,7 @@ export default {
 
 <style lang="scss" scoped>
 .custom-blue {
-  background: #007bc4;;
+  background: #007bc4;
 }
 .md-app {
   height: calc(100vh - 84px);

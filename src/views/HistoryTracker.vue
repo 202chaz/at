@@ -14,11 +14,15 @@
       <md-table-row v-for="data in tableData" :key="data._id">
         <md-table-cell>{{ data._id }}</md-table-cell>
         <md-table-cell>{{ data.taskStatus }}</md-table-cell>
-        <md-table-cell>{{ data.triggeredBy ? data.triggeredBy : 'N/A' }}</md-table-cell>
-        <md-table-cell>{{ data.taskAction ? data.taskAction : 'N/A' }}</md-table-cell>
+        <md-table-cell>{{
+          data.triggeredBy ? data.triggeredBy : "N/A"
+        }}</md-table-cell>
+        <md-table-cell>{{
+          data.taskAction ? data.taskAction : "N/A"
+        }}</md-table-cell>
         <md-table-cell>{{ data.taskTriggeredDate }}</md-table-cell>
-        <md-table-cell>{{ data.initialDataValues }}</md-table-cell>
-        <md-table-cell>{{ data.finalDataValues }}</md-table-cell>
+        <md-table-cell>{{ data.initialDataValues[0] }}</md-table-cell>
+        <md-table-cell>{{ data.finalDataValues[0] }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
@@ -32,12 +36,12 @@ export default {
   created() {
     this.$store.commit("SET_LAYOUT", "app-layout"),
       this.$store.commit("SET_ROUTE", "History Tracker");
-      this.getData();
+    this.getData();
   },
   data() {
     return {
       tableData: []
-    }
+    };
   },
   methods: {
     getData() {
@@ -46,6 +50,7 @@ export default {
         .then(response => {
           if (response && response.data) {
             this.tableData = response.data;
+            console.log(response.data);
           }
         });
     }
