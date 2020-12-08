@@ -103,6 +103,7 @@ export default new Vuex.Store({
         });
     },
     submit_rake_request({ commit }, data) {
+      data['triggeredBy'] = "Admin User";
       commit("rake_processing");
       axios
         .post("http://localhost:4000/rakes", {
