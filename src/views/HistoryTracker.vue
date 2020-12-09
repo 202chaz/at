@@ -21,8 +21,8 @@
           data.taskAction ? data.taskAction : "N/A"
         }}</md-table-cell>
         <md-table-cell>{{ data.taskTriggeredDate }}</md-table-cell>
-        <md-table-cell>{{ data.initialDataValues[0] }}</md-table-cell>
-        <md-table-cell>{{ data.finalDataValues[0] }}</md-table-cell>
+        <md-table-cell>{{ data.initialDataValues ? data.initialDataValues[0] : '' }}</md-table-cell>
+        <md-table-cell>{{ data.finalDataValues ? data.finalDataValues[0] : '' }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
